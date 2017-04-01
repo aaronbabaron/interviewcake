@@ -19,20 +19,36 @@ function mergeMeet(arr) {
   return arr;
 }
 
+function mergeMeetsort(arr) {
+  arr = arr.sort((a, b) => {
+    if (a.startTime < b.startTime) return false;
+    else if (b.startTime < a.startTime) return true;
+    else {
+      if (a.endTime < b.endTime) return false;
+      else return true;
+    }
+  });
 
-//console.log(mergeMeet(  [
-//    {startTime: 0,  endTime: 1},
-//    {startTime: 5,  endTime: 6},
-//    {startTime: 1,  endTime: 3},
-//    {startTime: 3,  endTime: 5},
-//    {startTime: 4,  endTime: 8},
-//    {startTime: 10, endTime: 12},
-//    {startTime: 9,  endTime: 10},
-//]))
+  console.log(arr);
+}
 
-console.log(mergeMeet(  [
+
+var arr2 =   [
+    {startTime: 0,  endTime: 1},
+    {startTime: 5,  endTime: 6},
+    {startTime: 1,  endTime: 3},
+    {startTime: 1,  endTime: 2},
+    {startTime: 3,  endTime: 5},
+    {startTime: 4,  endTime: 8},
+    {startTime: 10, endTime: 12},
+    {startTime: 9,  endTime: 10},
+];
+
+var arr =  [
     {startTime: 1, endTime: 10},
     {startTime: 2, endTime: 6},
     {startTime: 3, endTime: 5},
     {startTime: 7, endTime: 9},
-]));
+];
+
+console.log(mergeMeetsort(arr2));
