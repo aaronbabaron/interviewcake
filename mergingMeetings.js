@@ -29,7 +29,28 @@ function mergeMeetsort(arr) {
     }
   });
 
-  console.log(arr);
+  var newArr = [];
+  newArr.push(arr[0]);
+
+  for (var i = 1; i < arr.length; ++i) {
+    var pos = newArr.length - 1;
+    var meeting = newArr[pos];
+
+    if (meeting.endTime < arr[i].startTime) {
+      newArr.push(arr[i]);
+      continue;
+    }
+
+    if (meeting.endTime < arr[i].endTime) {
+      meeting.endTime = arr[i].endTime;
+    }
+
+    if (meeting.startTime > arr[i].startTime) {
+      meeting.startTime = arr[i].startTime;
+    } 
+  }
+
+  return newArr;
 }
 
 
@@ -51,4 +72,4 @@ var arr =  [
     {startTime: 7, endTime: 9},
 ];
 
-console.log(mergeMeetsort(arr2));
+console.log(mergeMeetsort(arr));
